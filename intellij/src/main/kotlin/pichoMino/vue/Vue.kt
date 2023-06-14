@@ -6,6 +6,8 @@ import javafx.scene.control.Button
 import javafx.scene.control.ComboBox
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.VBox
 
 
@@ -15,6 +17,7 @@ class Vue: VBox() {
      var gameId : TextField
      var gameKey : TextField
      var nbJoueur : ComboBox<Int>
+
     init {
         buttonConnect = Button("Connect")
         buttonConnect.setMinSize(200.0, 100.0)
@@ -34,6 +37,7 @@ class Vue: VBox() {
         buttonPlay = Button("Play")
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
+
 
 //        this.style = ("-fx-background-color : green")
         this.children.addAll(buttonPlay,nbJoueur,buttonConnect,lbGId,gameId,lbGKey,gameKey)

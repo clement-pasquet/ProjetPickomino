@@ -18,7 +18,6 @@ class Main: Application() {
         var contrPlay = controllerPlay(vue,connect)
         vue.buttonPlay.onMouseClicked = contrPlay
         primaryStage.show()
-
     }
 }
 
@@ -28,5 +27,4 @@ fun main() {
 //    val currentGame = connect.gameState(id, key)
 //    println("Nouvelle partie = $currentGame")
     Application.launch(Main::class.java)
-
 }
