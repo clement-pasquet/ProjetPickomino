@@ -16,6 +16,7 @@ import javafx.application.Application
 import javafx.geometry.HPos
 import javafx.scene.Scene
 import javafx.scene.layout.ColumnConstraints
+import javafx.scene.layout.Priority
 import javafx.stage.Stage
 
 
@@ -26,7 +27,7 @@ class Vue: VBox() {
     var username:TextField
      //var buttonConnect : Button
     var creatPartie : RadioButton
-    // var nbJoueurText: Label
+    var nbJoueurText: Label
     var nbJoueur : ComboBox<Int>
 
     var joinPartie : RadioButton
@@ -87,7 +88,8 @@ class Vue: VBox() {
         var lbGKey = Label("Clé de la partie")
         gameKey = TextField()
         gameKey.setMaxSize(200.0, 100.0)
-        var lbNbPartie = Label("Nombre de Partie")
+        //var lbNbPartie = Label("Nombre de Partie")
+        this.nbJoueurText = Label("Nombre de joueur")
         var l = FXCollections.observableArrayList<Int>(2,3,4)
         nbJoueur = ComboBox(l)
         nbJoueur.selectionModel.selectFirst()
@@ -117,39 +119,50 @@ class Vue: VBox() {
         var gridpane = GridPane()
 
         gridpane.add(this.buttonPlay, 0, 0)
-        gridpane.add(this.imageview, 1, 0) //mettre le logo
+        gridpane.add(this.imageview, 2, 0) //mettre le logo
         gridpane.add(this.username, 0, 1)
         gridpane.add(this.creatPartie, 0, 2)
-        gridpane.add(this.nbJoueur, 0, 3)
+        gridpane.add(this.nbJoueurText, 1, 1)
+        gridpane.add(this.nbJoueur, 2, 1)
         gridpane.add(this.joinPartie, 0, 4)
         gridpane.add(lbGId, 0,5)
         gridpane.add(this.gameId, 0, 6)
         gridpane.add(lbGKey, 1, 5)
         gridpane.add(this.gameKey, 1, 6)
-        gridpane.add(this.textPerso, 1, 2)
+        gridpane.add(this.textPerso, 1, 3)
         // peut-être faire un deuxième gridpane dans le 1er
         var gridpane1 = GridPane()
         gridpane1.add(this.imageViewJaune, 0, 1)
         gridpane1.add(this.imageViewBleue, 1, 1)
         gridpane1.add(this.imageViewVert, 0, 2)
         gridpane1.add(this.imageViewRouge, 1, 2)
-        gridpane.add(gridpane1, 1, 3)
-        gridpane.vgap = 20.0
-        gridpane.hgap = 20.0
+
+
+        val colonne1_1 = ColumnConstraints()
+        colonne1_1.halignment = HPos.CENTER
+        val colonne1_2 = ColumnConstraints()
+        colonne1_2.halignment = HPos.CENTER
+        gridpane1.columnConstraints.addAll(colonne1_1, colonne1_2)
 
         val colonne1 = ColumnConstraints()
         colonne1.percentWidth = 50.0
+        colonne1.hgrow = Priority.ALWAYS
         colonne1.halignment = HPos.LEFT
 
         val colonne2 = ColumnConstraints()
-        colonne2.percentWidth = 50.0
+        colonne2.percentWidth = 35.0
+        colonne2.hgrow= Priority.ALWAYS
         colonne2.halignment = HPos.CENTER
 
         gridpane.columnConstraints.addAll(colonne1, colonne2)
 
-
+        gridpane.add(gridpane1, 1, 4)
+        gridpane.vgap = 20.0
+        gridpane.hgap = 20.0
 
         this.children.addAll(gridpane)
-        this.padding = Insets(100.0)
+        this.padding = Insets(50.0)
+        this.minHeight = 800.0
+        this.minWidth = 800.0
     }
 }
