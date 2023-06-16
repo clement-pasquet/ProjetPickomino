@@ -35,6 +35,7 @@ class Vue: VBox() {
     var gameId : TextField
 
     var textPerso : Label
+    var textPerso2 : Label
     var imagePersoJaune:Image
     var imageViewJaune:ImageView
     var imagePersoRouge:Image
@@ -54,9 +55,11 @@ class Vue: VBox() {
         imageview.fitWidth = 100.0
         imageview.fitHeight = 100.0
 
-        this.textPerso = Label("Choisis ton personnage")
-        this.textPerso.style = ("-fx-font-size : 30px")
-        this.textPerso.style = ("-fx-font-weight : bold")
+        this.textPerso = Label("Choisis ton")
+        this.textPerso.style = ("-fx-font-size : 30px;-fx-font-weight : bold;")
+
+        this.textPerso2 = Label("personnage :")
+        this.textPerso2.style = ("-fx-font-size : 30px;-fx-font-weight : bold;")
 
         this.imagePersoJaune = Image("file:./image/Personnages/worm_yellow_cute1jaune.png")
         this.imageViewJaune = ImageView(this.imagePersoJaune)
@@ -81,7 +84,7 @@ class Vue: VBox() {
 
 
 
-        var lbGId = Label("Addresse de la partie")
+        var lbGId = Label("Adresse de la partie")
         gameId = TextField()
         gameId.setMaxSize(200.0, 100.0)
 
@@ -125,11 +128,13 @@ class Vue: VBox() {
         gridpane.add(this.nbJoueurText, 1, 1)
         gridpane.add(this.nbJoueur, 2, 1)
         gridpane.add(this.joinPartie, 0, 4)
-        gridpane.add(lbGId, 0,5)
-        gridpane.add(this.gameId, 0, 6)
-        gridpane.add(lbGKey, 1, 5)
-        gridpane.add(this.gameKey, 1, 6)
+        gridpane.add(lbGId, 0,6)
+        gridpane.add(this.gameId, 0, 7)
+        gridpane.add(lbGKey, 1, 6)
+        gridpane.add(this.gameKey, 1, 7)
         gridpane.add(this.textPerso, 1, 3)
+        gridpane.add(this.textPerso2, 1, 4)
+
         // peut-être faire un deuxième gridpane dans le 1er
         var gridpane1 = GridPane()
         gridpane1.add(this.imageViewJaune, 0, 1)
@@ -152,11 +157,11 @@ class Vue: VBox() {
         val colonne2 = ColumnConstraints()
         colonne2.percentWidth = 35.0
         colonne2.hgrow= Priority.ALWAYS
-        colonne2.halignment = HPos.CENTER
+        colonne2.halignment = HPos.LEFT
 
         gridpane.columnConstraints.addAll(colonne1, colonne2)
 
-        gridpane.add(gridpane1, 1, 4)
+        gridpane.add(gridpane1, 1, 5)
         gridpane.vgap = 20.0
         gridpane.hgap = 20.0
 
