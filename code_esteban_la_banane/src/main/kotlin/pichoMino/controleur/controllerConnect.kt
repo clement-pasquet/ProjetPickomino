@@ -32,7 +32,7 @@ class controllerConnect(vueMenu: vueMenu,vuePlayer : vuePlayer,primaryStage : St
         }else {
             try {
                 var gameState = connect.gameState(vueMenu.gameId.text.toInt(), vueMenu.gameKey.text.toInt())
-                var username = vueMenu.usernameField.text
+                var username = vueMenu.username.text
                 if (username==""){
                     println("Please enter a name!")
                 }else {

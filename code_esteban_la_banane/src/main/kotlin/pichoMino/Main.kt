@@ -23,7 +23,7 @@ class Main: Application() {
         var contrPlay = controllerPlay(vueMenu,connect)
         vueMenu.buttonPlay.onMouseClicked = contrPlay
         var contrConnect = controllerConnect(vueMenu,vuePlayer,primaryStage,connect,playerUserName)
-        vueMenu.buttonConnect.onMouseClicked = contrConnect
+        vueMenu.buttonPlay.onMouseClicked = contrConnect
 
         var contrPlayerId = controllerPlayerIdButton(vuePlayer,primaryStage,playerId,playerUserName)
         vuePlayer.j1.onMouseClicked = contrPlayerId
