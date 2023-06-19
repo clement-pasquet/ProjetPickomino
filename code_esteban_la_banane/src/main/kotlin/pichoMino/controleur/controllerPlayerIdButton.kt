@@ -27,7 +27,7 @@ class controllerPlayerIdButton(vuePlayer: vuePlayer,primaryStage: Stage,playerId
             val button: Button = event.source as Button
             playerId = button.text[1].digitToInt()
             var vueJeu = vueJeu(playerUsername,playerId)
-            primaryStage.scene = Scene(vueJeu,950.0,900.0)
+            primaryStage.scene = Scene(vueJeu,1280.0,720.0)
         }
     }
 }

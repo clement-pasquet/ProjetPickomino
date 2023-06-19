@@ -18,7 +18,8 @@ import javafx.scene.text.Font
 import javafx.stage.Stage
 
 
-class vueMenu: VBox() {    var buttonPlay : Button
+class vueMenu: VBox() {
+    var buttonPlay : Button
     var imagelogo: Image
     var imageview: ImageView
     var username:TextField
@@ -30,6 +31,9 @@ class vueMenu: VBox() {    var buttonPlay : Button
     var joinPartie : RadioButton
     var gameKey : TextField
     var gameId : TextField
+    var playerNumber : TextField
+
+    var toggleGroup = ToggleGroup()
 
     var textPerso : Label
     var textPerso2 : Label
@@ -110,10 +114,11 @@ class vueMenu: VBox() {    var buttonPlay : Button
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
         buttonPlay.font = jockeyOneFontBig
+        buttonPlay.textFill = Color.WHITESMOKE
 
 
 
-        val toggleGroup = ToggleGroup()
+
 
         this.creatPartie = RadioButton("Créer une partie")
         this.creatPartie.textFill = Color.WHITE
@@ -130,12 +135,20 @@ class vueMenu: VBox() {    var buttonPlay : Button
         this.username = TextField()
         this.username.promptText = "Username"
         this.username.font = jockeyOneFont
+        this.username.style = "-fx-background-radius: 10;"
         this.gameId = TextField()
         this.gameId.promptText = "Id de la partie"
+        this.gameId.style = "-fx-background-radius: 10;"
         this.gameId.font = jockeyOneFont
         this.gameKey = TextField()
         this.gameKey.promptText = "Code de partie"
         this.gameKey.font = jockeyOneFont
+        this.gameKey.style ="-fx-background-radius:10;"
+
+        this.playerNumber = TextField()
+        this.playerNumber.promptText = "Numéro de joueur"
+        this.playerNumber.font = jockeyOneFont
+        this.playerNumber.style ="-fx-background-radius:10;"
 
 
         var gridpane = GridPane()
@@ -151,8 +164,9 @@ class vueMenu: VBox() {    var buttonPlay : Button
         gridpane.add(this.gameId, 0, 7)
         gridpane.add(lbGKey, 1, 6)
         gridpane.add(this.gameKey, 1, 7)
-        gridpane.add(this.textPerso, 1, 3)
+        gridpane.add(this.textPerso, 1, 2)
         gridpane.add(this.textPerso2, 1, 4)
+        gridpane.add(this.playerNumber,0,8)
 
         // peut-être faire un deuxième gridpane dans le 1er
         var gridpane1 = GridPane()
@@ -181,11 +195,12 @@ class vueMenu: VBox() {    var buttonPlay : Button
         gridpane.columnConstraints.addAll(colonne1, colonne2)
 
         gridpane.add(gridpane1, 1, 5)
-        gridpane.vgap = 20.0
-        gridpane.hgap = 20.0
+        gridpane.hgap = 10.0  // Ajuster l'espacement horizontal entre les colonnes
+        gridpane.vgap = 10.0  // Ajuster l'espacement vertical entre les lignes
+
 
         this.children.addAll(gridpane)
-        this.padding = Insets(50.0)
+        this.padding = Insets(20.0)
         this.minHeight = 800.0
         this.minWidth = 800.0
     }

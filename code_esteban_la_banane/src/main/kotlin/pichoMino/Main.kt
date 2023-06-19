@@ -12,24 +12,30 @@ import pichoMino.vue.vueMenu
 import pichoMino.vue.vuePlayer
 
 class Main: Application() {
+
+    var vuePlayer = vuePlayer()
+
+
     override fun start(primaryStage: Stage) {
         val vueMenu = vueMenu()
-        var vuePlayer = vuePlayer()
-        var playerUserName  = ""
+
+        var vuePlayer = vuePlayer
+
+        var playerUserName  = "Clément" //parceque c'est le meilleur
         var playerId = 0
         val connect = Connector.factory("172.26.82.76", "8080")
         primaryStage.title="PickoMino"
-        primaryStage.scene= Scene(vueMenu, 950.0, 900.0,)
-        var contrPlay = controllerPlay(vueMenu,connect)
+        primaryStage.scene= Scene(vueMenu, 1280.0, 720.0,)
+        var contrPlay = controllerPlay(vueMenu,connect, primaryStage)
         vueMenu.buttonPlay.onMouseClicked = contrPlay
-        var contrConnect = controllerConnect(vueMenu,vuePlayer,primaryStage,connect,playerUserName)
-        vueMenu.buttonPlay.onMouseClicked = contrConnect
+
 
         var contrPlayerId = controllerPlayerIdButton(vuePlayer,primaryStage,playerId,playerUserName)
         vuePlayer.j1.onMouseClicked = contrPlayerId
         vuePlayer.j2.onMouseClicked = contrPlayerId
         vuePlayer.j3.onMouseClicked = contrPlayerId
         vuePlayer.j4.onMouseClicked = contrPlayerId
+
 
         primaryStage.show()
 
