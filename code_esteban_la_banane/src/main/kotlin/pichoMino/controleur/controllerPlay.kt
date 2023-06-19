@@ -23,22 +23,22 @@ class controllerPlay(vueMenu : vueMenu, connect : Connector, primaryStage : Stag
     override fun handle(event: MouseEvent) {
         val selectedButton = vueMenu.toggleGroup.selectedToggle as RadioButton?
 
-//        if (selectedButton == vueMenu.joinPartie){
-//            // var contrConnect = controllerConnect(vueMenu,vuePlayer,primaryStage,connect,playerUserName)
-//            println("connexion choisie")
-//            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
-//            vueMenu.buttonPlay.onMouseClicked = contrConnect
-//        }
-//        if (selectedButton == vueMenu.creatPartie){
-//            println("Nouvelle partie choisie")
-//            var identification =  connect.newGame(vueMenu.nbJoueur.value)
-//            var id = identification.first
-//            var key = identification.second
-//            vueMenu.gameId.text = id.toString()
-//            vueMenu.gameKey.text = key.toString()
-//            vueMenu.gameHasBeenCreated = true
-//            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
-//            vueMenu.buttonPlay.onMouseClicked = contrConnect
+        if (selectedButton == vueMenu.joinPartie){
+            // var contrConnect = controllerConnect(vueMenu,vuePlayer,primaryStage,connect,playerUserName)
+            println("connexion choisie")
+            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
+            vueMenu.buttonPlay.onMouseClicked = contrConnect
+        }
+        if (selectedButton == vueMenu.creatPartie){
+            println("Nouvelle partie choisie")
+            var identification =  connect.newGame(vueMenu.nbJoueur.value)
+            var id = identification.first
+            var key = identification.second
+            vueMenu.gameId.text = id.toString()
+            vueMenu.gameKey.text = key.toString()
+            vueMenu.gameHasBeenCreated = true
+            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
+            vueMenu.buttonPlay.onMouseClicked = contrConnect
         }
 
     }
