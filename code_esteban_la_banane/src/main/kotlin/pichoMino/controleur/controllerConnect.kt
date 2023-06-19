@@ -29,6 +29,11 @@ class controllerConnect(vueMenu: vueMenu,vuePlayer : vuePlayer,primaryStage : St
 
     override fun handle(event: MouseEvent) {
         if (vueMenu.gameKey.text == "" || vueMenu.gameId.text== ""){
+            val alert = Alert(Alert.AlertType.WARNING)
+            alert.title = "Avertissement"
+            alert.headerText = "Clé et ID sont vides"
+            alert.contentText = "Veuillez saisir une clé ET un identifiant de jeu s'il-vous-plaît."
+            alert.showAndWait()
             println("Please indicate Key AND game ID")
         }else {
             try {
@@ -36,11 +41,11 @@ class controllerConnect(vueMenu: vueMenu,vuePlayer : vuePlayer,primaryStage : St
                 var username = vueMenu.username.text
                 if (username==""){
                     println("Please enter a name!")
-//                    val alert = Alert(Alert.AlertType.WARNING)
-//                    alert.title = "Avertissement"
-//                    alert.headerText = "Nom manquant"
-//                    alert.contentText = "Veuillez entrer votre nom avant de continuer."
-//                    alert.showAndWait()
+                    val alert = Alert(Alert.AlertType.WARNING)
+                    alert.title = "Avertissement"
+                    alert.headerText = "Nom manquant"
+                    alert.contentText = "Veuillez entrer votre nom avant de continuer."
+                    alert.showAndWait()
                 }else {
                     playerUsername = username
                     var nbJoueurMax = gameState.score().size
@@ -86,12 +91,22 @@ class controllerConnect(vueMenu: vueMenu,vuePlayer : vuePlayer,primaryStage : St
                 }
             } catch (ex: Exception) {
                 if (ex is NumberFormatException) {
-                    println("Key and ID must be numbers !")
+                    val alert = Alert(Alert.AlertType.WARNING)
+                    alert.title = "Avertissement"
+                    alert.headerText = "Clé et ID ne sont pas des nombres"
+                    alert.contentText = "Veuillez entrer votre Clé et/ou votre id sous forme de nombres avant de continuer."
+                    alert.showAndWait()
                 }
                 if (ex is UnknownIdException) {
-                    println("ID is incorrect !")
+                    val alert = Alert(Alert.AlertType.WARNING)
+                    alert.title = "Avertissement"
+                    alert.headerText = "ID incorrect"
+                    alert.showAndWait()
                 } else if (ex is IncorrectKeyException) {
-                    println("Key is incorrect !")
+                    val alert = Alert(Alert.AlertType.WARNING)
+                    alert.title = "Avertissement"
+                    alert.headerText = "Clé incorrect"
+                    alert.showAndWait()
                 }
             }
         }
