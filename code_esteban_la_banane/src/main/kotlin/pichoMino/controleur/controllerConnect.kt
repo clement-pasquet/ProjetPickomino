@@ -5,6 +5,7 @@ import iut.info1.pickomino.exceptions.IncorrectKeyException
 import iut.info1.pickomino.exceptions.UnknownIdException
 import javafx.event.EventHandler
 import javafx.scene.Scene
+import javafx.scene.control.Alert
 import javafx.scene.input.MouseEvent
 import javafx.stage.Stage
 import pichoMino.Main
@@ -35,6 +36,11 @@ class controllerConnect(vueMenu: vueMenu,vuePlayer : vuePlayer,primaryStage : St
                 var username = vueMenu.username.text
                 if (username==""){
                     println("Please enter a name!")
+//                    val alert = Alert(Alert.AlertType.WARNING)
+//                    alert.title = "Avertissement"
+//                    alert.headerText = "Nom manquant"
+//                    alert.contentText = "Veuillez entrer votre nom avant de continuer."
+//                    alert.showAndWait()
                 }else {
                     playerUsername = username
                     var nbJoueurMax = gameState.score().size
