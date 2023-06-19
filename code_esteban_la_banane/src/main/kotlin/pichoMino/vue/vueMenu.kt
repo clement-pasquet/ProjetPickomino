@@ -118,11 +118,10 @@ class vueMenu: VBox() {
 
 
 
-
-
         this.creatPartie = RadioButton("Créer une partie")
         this.creatPartie.textFill = Color.WHITE
         creatPartie.toggleGroup = toggleGroup
+        creatPartie.isSelected = true // le radio button est selec. par défaut
         this.creatPartie.font = jockeyOneFont
 
         this.joinPartie = RadioButton("Rejoindre une partie")
