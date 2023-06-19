@@ -1,14 +1,9 @@
 package pichoMino.vue
 
 import javafx.collections.FXCollections
-import javafx.scene.control.Button
-import javafx.scene.control.ComboBox
-import javafx.scene.control.Label
-import javafx.scene.control.TextField
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.geometry.Insets
-import javafx.scene.control.RadioButton
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
@@ -16,8 +11,10 @@ import javafx.scene.paint.Color
 import javafx.application.Application
 import javafx.geometry.HPos
 import javafx.scene.Scene
+import javafx.scene.control.*
 import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.Priority
+import javafx.scene.text.Font
 import javafx.stage.Stage
 
 
@@ -49,17 +46,24 @@ class vueMenu: VBox() {    var buttonPlay : Button
 
 
     init {
+        val jockeyOneFont = Font.loadFont("file:./font/JockeyOne-Regular.ttf",20.0)
         this.gameHasBeenCreated = true
         this.imagelogo = Image("file:./image/pickomino_logo 1logo.png")
         this.imageview = ImageView(this.imagelogo)
         imageview.fitWidth = 100.0
         imageview.fitHeight = 100.0
 
+        val jockeyOneFontBig = Font.loadFont("file:./font/JockeyOne-Regular.ttf",50.0)
+
         this.textPerso = Label("Choisis ton")
-        this.textPerso.style = ("-fx-font-size : 30px;-fx-font-weight : bold;")
+        this.textPerso.font = jockeyOneFontBig
+        this.textPerso.textFill = Color.WHITE
+
 
         this.textPerso2 = Label("personnage :")
-        this.textPerso2.style = ("-fx-font-size : 30px;-fx-font-weight : bold;")
+        this.textPerso2.font = jockeyOneFontBig
+        this.textPerso2.textFill = Color.WHITE
+
 
         this.imagePersoJaune = Image("file:./image/Personnages/worm_yellow_cute1jaune.png")
         this.imageViewJaune = ImageView(this.imagePersoJaune)
@@ -85,39 +89,54 @@ class vueMenu: VBox() {    var buttonPlay : Button
 
 
         var lbGId = Label("Adresse de la partie")
+        lbGId.font = jockeyOneFont
+        lbGId.textFill = Color.WHITE
+
         gameId = TextField()
         gameId.setMaxSize(200.0, 100.0)
 
         var lbGKey = Label("Clé de la partie")
+        lbGKey.font = jockeyOneFont
+        lbGKey.textFill = Color.WHITE
         gameKey = TextField()
         gameKey.setMaxSize(200.0, 100.0)
-        //var lbNbPartie = Label("Nombre de Partie")
         this.nbJoueurText = Label("Nombre de joueur")
+        this.nbJoueurText.textFill = Color.WHITE
+        nbJoueurText.font = jockeyOneFont
         var l = FXCollections.observableArrayList<Int>(2,3,4)
         nbJoueur = ComboBox(l)
         nbJoueur.selectionModel.selectFirst()
         buttonPlay = Button("Play")
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
+        buttonPlay.font = jockeyOneFontBig
+
+
+
+        val toggleGroup = ToggleGroup()
 
         this.creatPartie = RadioButton("Créer une partie")
-        this.creatPartie.style = ("-fx-font-size : 200px") // j'ai l'impression que la taille de police sur le texte radiobt ne fais rien
-        this.creatPartie.style = ("-fx-font-family: sans-serif")
         this.creatPartie.textFill = Color.WHITE
+        creatPartie.toggleGroup = toggleGroup
+        this.creatPartie.font = jockeyOneFont
 
         this.joinPartie = RadioButton("Rejoindre une partie")
-        this.joinPartie.style = ("-fx-font-size : 200px")
-        this.joinPartie.style = ("-fx-font-family: sans-serif")
         this.joinPartie.textFill = Color.WHITE
+        joinPartie.toggleGroup = toggleGroup
+        this.joinPartie.font = jockeyOneFont
 
         this.style = ("-fx-background-color : #8E7FEE")
 
         this.username = TextField()
         this.username.promptText = "Username"
+        this.username.font = jockeyOneFont
         this.gameId = TextField()
         this.gameId.promptText = "Id de la partie"
+        this.gameId.font = jockeyOneFont
         this.gameKey = TextField()
         this.gameKey.promptText = "Code de partie"
+        this.gameKey.font = jockeyOneFont
+
 
         var gridpane = GridPane()
 
