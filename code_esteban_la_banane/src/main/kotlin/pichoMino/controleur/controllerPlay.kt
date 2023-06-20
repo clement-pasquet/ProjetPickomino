@@ -1,33 +1,94 @@
 package pichoMino.controleur
 
 import iut.info1.pickomino.Connector
+import iut.info1.pickomino.exceptions.IncorrectKeyException
+import iut.info1.pickomino.exceptions.UnknownIdException
 import javafx.event.EventHandler
+import javafx.scene.Scene
+import javafx.scene.control.Alert
 import javafx.scene.control.RadioButton
 import javafx.scene.input.MouseEvent
 import javafx.stage.Stage
+import pichoMino.Player
+import pichoMino.vue.vueJeu
 import pichoMino.vue.vueMenu
-import pichoMino.vue.vuePlayer
 
-class controllerPlay(vueMenu : vueMenu, connect : Connector, primaryStage : Stage):  EventHandler<MouseEvent>{
+class controllerPlay(vueMenu : vueMenu, connect : Connector, primaryStage : Stage,player: Player):  EventHandler<MouseEvent>{
     private val vueMenu : vueMenu
     private val connect : Connector
     private val primaryStage : Stage
+    private var player : Player
 
 
     init {
         this.vueMenu = vueMenu
         this.connect = connect
         this.primaryStage = primaryStage
+        this.player= player
     }
 
     override fun handle(event: MouseEvent) {
         val selectedButton = vueMenu.toggleGroup.selectedToggle as RadioButton?
 
         if (selectedButton == vueMenu.joinPartie){
-            // var contrConnect = controllerConnect(vueMenu,vuePlayer,primaryStage,connect,playerUserName)
-            println("connexion choisie")
-            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
-            vueMenu.buttonPlay.onMouseClicked = contrConnect
+
+            if (vueMenu.gameKey.text == "" || vueMenu.gameId.text== ""){
+                val alert = Alert(Alert.AlertType.WARNING)
+                alert.title = "Avertissement"
+                alert.headerText = "Clé ou ID est vide"
+                alert.contentText = "Veuillez saisir une clé ET un identifiant de jeu s'il-vous-plaît."
+                alert.showAndWait()
+                println("Please indicate Key AND game ID")
+            }else {
+                try {
+                    var gameState = connect.gameState(vueMenu.gameId.text.toInt(), vueMenu.gameKey.text.toInt())
+                    var username = vueMenu.username.text
+                    if (username==""){
+                        println("Please enter a name!")
+                        val alert = Alert(Alert.AlertType.WARNING)
+                        alert.title = "Avertissement"
+                        alert.headerText = "Nom manquant"
+                        alert.contentText = "Veuillez entrer votre nom avant de continuer."
+                        alert.showAndWait()
+
+                    }else if (vueMenu.playerNumber.text==""){
+                        println("Please enter a player number!")
+                        val alert = Alert(Alert.AlertType.WARNING)
+                        alert.title = "Avertissement"
+                        alert.headerText = "Numéro de joueur manquant"
+                        alert.contentText = "Veuillez entrer votre numéro avant de continuer."
+                        alert.showAndWait()
+                    }else {
+                        player.playerName = vueMenu.username.text
+                        player.playerId = vueMenu.playerNumber.text.toInt()
+                        player.gameId = vueMenu.gameId.text.toInt()
+                        player.gameKey = vueMenu.gameKey.text.toInt()
+                        var vueJeu = vueJeu(player)
+                        var controllerRoll = controllerRoll(vueJeu,connect)
+                        vueJeu.buttonRoll.onMouseClicked = controllerRoll
+                        primaryStage.scene = Scene(vueJeu,1280.0,720.0)
+                    }
+                } catch (ex: Exception) {
+                    if (ex is NumberFormatException) {
+                        val alert = Alert(Alert.AlertType.WARNING)
+                        alert.title = "Avertissement"
+                        alert.headerText = "Clé ou ID n'est pas un nombre"
+                        alert.contentText = "Veuillez entrer votre Clé et/ou votre ID sous forme de nombres avant de continuer."
+                        alert.showAndWait()
+                    }
+                    if (ex is UnknownIdException) {
+                        val alert = Alert(Alert.AlertType.WARNING)
+                        alert.title = "Avertissement"
+                        alert.headerText = "ID incorrect"
+                        alert.showAndWait()
+                    } else if (ex is IncorrectKeyException) {
+                        val alert = Alert(Alert.AlertType.WARNING)
+                        alert.title = "Avertissement"
+                        alert.headerText = "Clé incorrect"
+                        alert.showAndWait()
+                    }
+                }
+            }
         }
         if (selectedButton == vueMenu.creatPartie){
             println("Nouvelle partie choisie")
@@ -37,8 +98,6 @@ class controllerPlay(vueMenu : vueMenu, connect : Connector, primaryStage : Stag
             vueMenu.gameId.text = id.toString()
             vueMenu.gameKey.text = key.toString()
             vueMenu.gameHasBeenCreated = true
-            var contrConnect = controllerConnect(vueMenu, vuePlayer(),primaryStage,connect,vueMenu.playerNumber.text)
-            vueMenu.buttonPlay.onMouseClicked = contrConnect
         }
 
     }

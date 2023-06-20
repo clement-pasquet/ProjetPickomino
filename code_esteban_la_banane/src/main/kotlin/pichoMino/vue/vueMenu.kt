@@ -110,7 +110,7 @@ class vueMenu: VBox() {
         var l = FXCollections.observableArrayList<Int>(2,3,4)
         nbJoueur = ComboBox(l)
         nbJoueur.selectionModel.selectFirst()
-        buttonPlay = Button("Play")
+        buttonPlay = Button("Create")
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
         buttonPlay.font = jockeyOneFontBig
