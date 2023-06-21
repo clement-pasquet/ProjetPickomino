@@ -11,6 +11,8 @@ import iut.info1.pichoMino.controleur.controllerPlay
 import iut.info1.pichoMino.controleur.controllerPlayerIdButton
 import iut.info1.pichoMino.vue.vueMenu
 import iut.info1.pichoMino.vue.vuePlayer
+import iut.info1.pichoMino.vue.vuePrincipale
+
 
 class Main: Application() {
 
@@ -32,11 +34,13 @@ class Main: Application() {
 
         val vuePlayer = vuePlayer
 
+        val vuePrincipale = vuePrincipale()
+
         val playerUserName  = "Clément" //parceque c'est le meilleur
         val playerId = 0
 
         primaryStage.title="PickoMino"
-        primaryStage.scene= Scene(vueMenu, 1280.0, 720.0,)
+        primaryStage.scene= Scene(vuePrincipale, 1600.0, 900.0,)
         val contrPlay = controllerPlay(vueMenu, conn, primaryStage)
         vueMenu.buttonPlay.onMouseClicked = contrPlay
 
