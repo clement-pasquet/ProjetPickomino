@@ -10,24 +10,27 @@ fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
     var score = 0
 
     for (dice in dices){
-        score += dice.ordinal
-
-        if (dice == DICE.worm){
+        if (dice != DICE.worm) {
+            score += dice.ordinal+1
+        }
+        else{
+            score += dice.ordinal
             hasWorm = true
         }
     }
-    vuePrincipale.listPickominos
+
+    println(dices)
+    println(score)
 
     if( score > 20 ){
-        var isSuperior = true
-        var i =0
-        while (isSuperior){
+        for (i in 0 until vuePrincipale.listPickominos.size){
             var imgV = vuePrincipale.listPickominos[i].graphic as ImageView
-            if (imgV.image.url.split("Des/")[1].split(".")[0].toInt() <= score){
+            if (imgV.image.url.split("Domino/")[1].split(".")[0].toInt() == score){
                 vuePrincipale.listPickominos[i].isDisable = false
-                i += 1
+                var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                vuePrincipale.listPickominos[i].onMouseClicked = contrChooseP
             }else{
-                isSuperior = false
+                vuePrincipale.listPickominos[i].isDisable = true
             }
         }
     }

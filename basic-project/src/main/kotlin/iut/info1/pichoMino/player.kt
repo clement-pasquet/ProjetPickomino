@@ -13,6 +13,7 @@ class Player {
     var gameId : Int
     var gameKey : Int
     var connect : Connector
+    var keptDices : List<DICE>
 
     init {
         playerId = 0
@@ -20,13 +21,14 @@ class Player {
         gameId = 0
         gameKey = 0
         connect = Connector.factory("172.26.82.76", "8080")
+        keptDices = listOf()
     }
 
     fun choiceDices(dices : List<DICE>) : List<DICE>?{
         try{
             return connect.choiceDices(gameId, gameKey, dices)
         }catch (ex : Exception){
-            if (ex == BadStepException()){
+            if (ex is BadStepException){
                 println("On ne peut pas appeler cette méthode à ce moment là du tour")
             }
             return null
@@ -41,10 +43,9 @@ class Player {
         try {
             return connect.keepDices(gameId,gameKey,dice)
         }catch (ex : Exception){
-            println(ex === DiceAlreadyKeptException())
-            if (ex == BadStepException()){
+            if (ex is BadStepException){
                 println("On ne peut pas appeler cette méthode à ce moment là du tour")
-            }else if (ex == DiceAlreadyKeptException()){
+            }else if (ex is DiceAlreadyKeptException){
                 println("Ce pickomino a déjà été gardé")
             }
             return false
@@ -55,9 +56,9 @@ class Player {
         try {
             return connect.takePickomino(gameId,gameKey,pickomino)
         }catch (ex : Exception){
-            if (ex == BadStepException()){
+            if (ex is BadStepException){
                 println("On ne peut pas appeler cette méthode à ce moment là du tour")
-            }else if (ex == BadPickominoChosenException()){
+            }else if (ex is BadPickominoChosenException){
                 println("Pickomino Incorrect")
             }
             return false

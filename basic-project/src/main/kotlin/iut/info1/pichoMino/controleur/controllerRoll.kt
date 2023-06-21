@@ -26,14 +26,15 @@ class controllerRoll(vuePrincipale: vuePrincipale, connect: Connector): EventHan
             var rolled =vuePrincipale.player.rollDices()
             var kept = connect.gameState(gameId,gameKey).current.keptDices
 
-            println(rolled)
-            println(kept)
+            vuePrincipale.player.keptDices = kept
+
+            checkCanTakePickomino(kept,vuePrincipale)
 
             vuePrincipale.desBoxB.children.clear()
 
             var listImages = listOf<ImageView>()
             var listImagesKept = listOf<ImageView>()
-            var listDices = listOf<Button>(vuePrincipale.db1,vuePrincipale.db2,vuePrincipale.db3,vuePrincipale.db4,vuePrincipale.db5,vuePrincipale.db6,vuePrincipale.db7,vuePrincipale.db8)
+            var listDices = listOf(vuePrincipale.db1,vuePrincipale.db2,vuePrincipale.db3,vuePrincipale.db4,vuePrincipale.db5,vuePrincipale.db6,vuePrincipale.db7,vuePrincipale.db8)
 
             for (dice in rolled){
                 var imgV = ImageView(Image(vuePrincipale.desImages[dice.ordinal]))
@@ -54,7 +55,6 @@ class controllerRoll(vuePrincipale: vuePrincipale, connect: Connector): EventHan
                 listDices[i].isDisable = false
                 i+=1
             }
-            println(i)
             if (i<8){
                 while (i-listImages.size<listImagesKept.size){
                     listDices[i].graphic = listImagesKept[i-listImages.size]

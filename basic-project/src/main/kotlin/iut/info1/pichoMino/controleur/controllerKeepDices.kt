@@ -16,8 +16,7 @@ class controllerKeepDices(vuePrincipale: vuePrincipale) : EventHandler<MouseEven
     }
 
     override fun handle(event: MouseEvent) {
-        var gamestate =
-            vuePrincipale.connect.gameState(vuePrincipale.player.gameId, vuePrincipale.player.gameKey).current.status
+        var gamestate = vuePrincipale.connect.gameState(vuePrincipale.player.gameId, vuePrincipale.player.gameKey).current.status
         if (gamestate == STATUS.KEEP_DICE) {
             var source = event.source as Button
             var imgV = source.graphic as ImageView
@@ -38,14 +37,17 @@ class controllerKeepDices(vuePrincipale: vuePrincipale) : EventHandler<MouseEven
                 value = DICE.worm
             }
 
-            vuePrincipale.player.keepDices(value)
-
-            for(bouton in vuePrincipale.listBoutonB){
-                var imgVBt = bouton.graphic as ImageView
-                if (imgVBt.image.url.split("Des/")[1] == finalString){
-                    bouton.isDisable = true
+            var possible = vuePrincipale.player.keepDices(value)
+            if (possible) {
+                for (bouton in vuePrincipale.listBoutonB) {
+                    var imgVBt = bouton.graphic as ImageView
+                    if (imgVBt.image.url.split("Des/")[1] == finalString) {
+                        bouton.isDisable = true
+                        vuePrincipale.player.keptDices+=value
+                    }
                 }
             }
         }
+        checkCanTakePickomino(vuePrincipale.player.keptDices,vuePrincipale)
     }
 }
