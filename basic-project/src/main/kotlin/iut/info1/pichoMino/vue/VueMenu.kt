@@ -1,20 +1,17 @@
 package iut.info1.pichoMino.vue
 
 import javafx.collections.FXCollections
-import javafx.geometry.HPos
 import javafx.geometry.Insets
+import javafx.geometry.Pos
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.ColumnConstraints
-import javafx.scene.layout.GridPane
-import javafx.scene.layout.Priority
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 
 
-class vueMenu: VBox() {
+class VueMenu: HBox() {
     var buttonPlay : Button
     var imagelogo: Image
     var imageview: ImageView
@@ -46,32 +43,30 @@ class vueMenu: VBox() {
 
     init {
         var font1 = javaClass.getResourceAsStream("/font/JockeyOne-Regular.ttf")
-        val jockeyOneFont = Font.loadFont(font1, 20.0)
+        var font3 = javaClass.getResourceAsStream("/font/JockeyOne-Medium.ttf")
+        var jockeyOneFont = Font.loadFont(font1,20.0)
+        var jockeyOneFontMedium = Font.loadFont(font3,30.0)
         this.gameHasBeenCreated = true
         this.imagelogo = Image("pickomino_logo 1logo.png")
 
         this.imageview = ImageView(this.imagelogo)
         imageview.fitWidth = 100.0
         imageview.fitHeight = 100.0
-
-        //val jockeyOneFontBig = Font.loadFont(font1,50.0)
+        var font2 = javaClass.getResourceAsStream("/font/JockeyOne-Fat.ttf")
+        var jockeyOneFontBig = Font.loadFont(font2,60.0)
 
         this.textPerso = Label("Choisis ton")
-        this.textPerso.font = jockeyOneFont
-        //this.textPerso.font.size = 50.0
+        this.textPerso.font = jockeyOneFontMedium
         this.textPerso.textFill = Color.WHITE
 
-
         this.textPerso2 = Label("personnage :")
-        //this.textPerso2.font = jockeyOneFontBig
+        this.textPerso2.font = jockeyOneFontBig
         this.textPerso2.textFill = Color.WHITE
-
 
         this.imagePersoJaune = Image("Personnages/worm_yellow_cute1jaune.png")
         this.imageViewJaune = ImageView(this.imagePersoJaune)
         imageViewJaune.fitWidth = 100.0
         imageViewJaune.fitHeight = 100.0
-
 
         this.imagePersoBleue = Image("Personnages/worm_blue_cute1.png")
         this.imageViewBleue = ImageView(this.imagePersoBleue)
@@ -88,116 +83,118 @@ class vueMenu: VBox() {
         imageViewRouge.fitWidth = 100.0
         imageViewRouge.fitHeight = 100.0
 
-
-
         val lbGId = Label("Adresse de la partie")
-        //lbGId.font = jockeyOneFont
         lbGId.textFill = Color.WHITE
+        lbGId.font = jockeyOneFont
 
         gameId = TextField()
         gameId.setMaxSize(200.0, 100.0)
 
         var lbGKey = Label("Clé de la partie")
-        //lbGKey.font = jockeyOneFont
         lbGKey.textFill = Color.WHITE
+        lbGKey.font = jockeyOneFont
         gameKey = TextField()
-        gameKey.setMaxSize(200.0, 100.0)
-        this.nbJoueurText = Label("Nombre de joueur")
+
+        this.nbJoueurText = Label("Nombre de joueurs")
         this.nbJoueurText.textFill = Color.WHITE
-        //nbJoueurText.font = jockeyOneFont
+        nbJoueurText.font = jockeyOneFontMedium
         var l = FXCollections.observableArrayList<Int>(2,3,4)
         nbJoueur = ComboBox(l)
         nbJoueur.selectionModel.selectFirst()
-        buttonPlay = Button("Create")
+        nbJoueur.style = "-fx-background-radius:10; -fx-background-color : #FFFF"
+        nbJoueur.setPrefSize(20.0,20.0)
+        buttonPlay = Button("Play")
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
-        buttonPlay.font = jockeyOneFont
-        buttonPlay.textFill = Color.WHITESMOKE
-
-
+        buttonPlay.font = jockeyOneFontMedium
+        buttonPlay.textFill = Color.WHITE
+        buttonPlay.style = "-fx-background-radius:15; "
 
         this.creatPartie = RadioButton("Créer une partie")
+        this.creatPartie.font = jockeyOneFont
         this.creatPartie.textFill = Color.WHITE
         creatPartie.toggleGroup = toggleGroup
         creatPartie.isSelected = true // le radio button est selec. par défaut
-        //this.creatPartie.font = jockeyOneFont
+        this.creatPartie.font = jockeyOneFont
 
         this.joinPartie = RadioButton("Rejoindre une partie")
+        this.joinPartie.font = jockeyOneFont
         this.joinPartie.textFill = Color.WHITE
         joinPartie.toggleGroup = toggleGroup
-        //this.joinPartie.font = jockeyOneFont
+        this.joinPartie.font = jockeyOneFont
 
         this.style = ("-fx-background-color : #8E7FEE")
 
         this.username = TextField()
         this.username.promptText = "Username"
-        //this.username.font = jockeyOneFont
+        this.username.font = jockeyOneFont
         this.username.style = "-fx-background-radius: 10;"
+        this.username.setMaxSize(300.0, 50.0)
+        this.username.setPrefSize(300.0, 50.0)
         this.gameId = TextField()
         this.gameId.promptText = "Id de la partie"
         this.gameId.style = "-fx-background-radius: 10;"
-        //this.gameId.font = jockeyOneFont
+        this.gameId.font = jockeyOneFont
+        this.gameId.setMaxSize(300.0, 50.0)
+        this.gameId.setPrefSize(300.0, 50.0)
         this.gameKey = TextField()
         this.gameKey.promptText = "Code de partie"
-        //this.gameKey.font = jockeyOneFont
+        this.gameKey.font = jockeyOneFont
         this.gameKey.style ="-fx-background-radius:10;"
+        this.gameKey.setMaxSize(300.0, 50.0)
+        this.gameKey.setPrefSize(300.0, 50.0)
 
         this.playerNumber = TextField()
+        this.playerNumber.setMaxSize(300.0, 50.0)
+        this.playerNumber.setPrefSize(300.0, 50.0)
         this.playerNumber.promptText = "Numéro de joueur"
-        //this.playerNumber.font = jockeyOneFont
+        this.playerNumber.font = jockeyOneFont
         this.playerNumber.style ="-fx-background-radius:10;"
 
+        var vBox1 = VBox()
+        vBox1.alignment = Pos.CENTER
+        vBox1.spacing = 20.0
+        this.imageview.fitWidth = 250.0
+        this.imageview.fitHeight = 250.0
 
-        var gridpane = GridPane()
-
-        gridpane.add(this.buttonPlay, 0, 0)
-        gridpane.add(this.imageview, 2, 0) //mettre le logo
-        gridpane.add(this.username, 0, 1)
-        gridpane.add(this.creatPartie, 0, 2)
-        gridpane.add(this.nbJoueurText, 1, 1)
-        gridpane.add(this.nbJoueur, 2, 1)
-        gridpane.add(this.joinPartie, 0, 4)
-        gridpane.add(lbGId, 0,6)
-        gridpane.add(this.gameId, 0, 7)
-        gridpane.add(lbGKey, 1, 6)
-        gridpane.add(this.gameKey, 1, 7)
-        gridpane.add(this.textPerso, 1, 2)
-        gridpane.add(this.textPerso2, 1, 4)
-        gridpane.add(this.playerNumber,0,8)
-
-        // peut-être faire un deuxième gridpane dans le 1er
+        vBox1.children.addAll(this.imageview,this.username, this.playerNumber, buttonPlay)
         var gridpane1 = GridPane()
-        gridpane1.add(this.imageViewJaune, 0, 1)
-        gridpane1.add(this.imageViewBleue, 1, 1)
-        gridpane1.add(this.imageViewVert, 0, 2)
-        gridpane1.add(this.imageViewRouge, 1, 2)
 
+        this.imageViewBleue.fitHeight = 170.0
+        this.imageViewBleue.fitWidth = 170.0
+        this.imageViewJaune.fitWidth = 170.0
+        this.imageViewJaune.fitHeight = 170.0
+        this.imageViewVert.fitWidth = 170.0
+        this.imageViewVert.fitHeight = 170.0
+        this.imageViewRouge.fitHeight = 150.0
+        this.imageViewRouge.fitWidth = 150.0
 
-        val colonne1_1 = ColumnConstraints()
-        colonne1_1.halignment = HPos.CENTER
-        val colonne1_2 = ColumnConstraints()
-        colonne1_2.halignment = HPos.CENTER
-        gridpane1.columnConstraints.addAll(colonne1_1, colonne1_2)
+        gridpane1.add(this.imageViewJaune, 0,0)
+        gridpane1.add(this.imageViewRouge, 1, 0)
+        gridpane1.add(this.imageViewBleue, 0,1)
+        gridpane1.add(this.imageViewVert, 1, 1)
+        gridpane1.hgap = 60.0
+        gridpane1.vgap = 60.0
+        var vBox2 = VBox()
+        vBox2.spacing = 20.0
+        var vBox2_1 = VBox()
+        vBox2_1.alignment = Pos.CENTER_LEFT
+        vBox2_1.spacing = -30.0
+        vBox2_1.children.addAll(this.textPerso, this.textPerso2)
+        var hBoxmini = HBox()
+        hBoxmini.children.addAll(this.nbJoueurText, this.nbJoueur)
+        hBoxmini.spacing = 20.0
+        hBoxmini.alignment = Pos.CENTER_LEFT
+        vBox2.children.addAll(hBoxmini, vBox2_1, gridpane1)
 
-        val colonne1 = ColumnConstraints()
-        colonne1.percentWidth = 50.0
-        colonne1.hgrow = Priority.ALWAYS
-        colonne1.halignment = HPos.LEFT
+        var vBox0 = VBox()
+        vBox0.spacing = 20.0
+        vBox0.children.addAll(this.creatPartie, this.joinPartie, lbGId, this.gameId, lbGKey,this.gameKey)
 
-        val colonne2 = ColumnConstraints()
-        colonne2.percentWidth = 35.0
-        colonne2.hgrow= Priority.ALWAYS
-        colonne2.halignment = HPos.LEFT
+        this.children.addAll(vBox0,vBox1, vBox2)
 
-        gridpane.columnConstraints.addAll(colonne1, colonne2)
-
-        gridpane.add(gridpane1, 1, 5)
-        gridpane.hgap = 10.0  // Ajuster l'espacement horizontal entre les colonnes
-        gridpane.vgap = 10.0  // Ajuster l'espacement vertical entre les lignes
-
-
-        this.children.addAll(gridpane)
-        this.padding = Insets(20.0)
+        this.padding = Insets(100.0)
+        this.spacing = 80.0
         this.minHeight = 800.0
         this.minWidth = 800.0
     }

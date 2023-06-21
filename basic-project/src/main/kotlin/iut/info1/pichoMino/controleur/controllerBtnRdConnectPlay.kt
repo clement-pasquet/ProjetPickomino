@@ -1,15 +1,15 @@
 package iut.info1.pichoMino.controleur
 
 import iut.info1.pichoMino.Player
-import iut.info1.pichoMino.vue.vueMenu
+import iut.info1.pichoMino.vue.VueMenu
 import iut.info1.pickomino.Connector
 import javafx.event.EventHandler
 import javafx.scene.control.RadioButton
 import javafx.scene.input.MouseEvent
 import javafx.stage.Stage
 
-class controllerBtnRdConnectPlay(vueMenu: vueMenu, primaryStage : Stage, connect : Connector, player: Player) : EventHandler<MouseEvent>{
-    private val vueMenu : vueMenu
+class controllerBtnRdConnectPlay(vueMenu: VueMenu, primaryStage : Stage, connect : Connector, player: Player) : EventHandler<MouseEvent>{
+    private val vueMenu : VueMenu
     private val primaryStage : Stage
     private val connect : Connector
     private var player: Player

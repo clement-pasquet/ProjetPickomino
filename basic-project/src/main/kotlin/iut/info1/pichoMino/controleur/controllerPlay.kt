@@ -2,7 +2,7 @@ package pichoMino.controleur
 
 import iut.info1.pichoMino.Player
 import iut.info1.pichoMino.controleur.controllerRoll
-import iut.info1.pichoMino.vue.vueMenu
+import iut.info1.pichoMino.vue.VueMenu
 import iut.info1.pichoMino.vue.vuePrincipale
 import iut.info1.pickomino.Connector
 import iut.info1.pickomino.exceptions.IncorrectKeyException
@@ -14,8 +14,8 @@ import javafx.scene.control.RadioButton
 import javafx.scene.input.MouseEvent
 import javafx.stage.Stage
 
-class controllerPlay(vueMenu : vueMenu, connect : Connector, primaryStage : Stage, player: Player):  EventHandler<MouseEvent>{
-    private val vueMenu : vueMenu
+class controllerPlay(vueMenu : VueMenu, connect : Connector, primaryStage : Stage, player: Player):  EventHandler<MouseEvent>{
+    private val vueMenu : VueMenu
     private val connect : Connector
     private val primaryStage : Stage
     private var player : Player

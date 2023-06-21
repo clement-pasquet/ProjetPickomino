@@ -7,7 +7,7 @@ import javafx.application.Platform
 import javafx.scene.Scene
 import javafx.stage.Stage
 import iut.info1.pichoMino.controleur.controllerBtnRdConnectPlay
-import iut.info1.pichoMino.vue.vueMenu
+import iut.info1.pichoMino.vue.VueMenu
 import pichoMino.controleur.controllerPlay
 
 
@@ -26,7 +26,7 @@ class Main: Application() {
         Thread.sleep(3)
     }
     override fun start(primaryStage: Stage) {
-        val vueMenu = vueMenu()
+        val vueMenu = VueMenu()
 
         var player = Player()
         primaryStage.title="PickoMino"
