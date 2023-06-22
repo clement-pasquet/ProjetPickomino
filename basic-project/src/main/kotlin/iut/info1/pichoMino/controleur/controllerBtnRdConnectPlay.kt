@@ -23,7 +23,7 @@ class controllerBtnRdConnectPlay(vueMenu: VueMenu, primaryStage : Stage, connect
 
     override fun handle(event: MouseEvent) {
         val eventSource : RadioButton = event.source as RadioButton
-        if (eventSource.text == "Rejoindre une partie"){
+        if (eventSource.text == "Rejoindre partie"){
             vueMenu.buttonPlay.text = "Join"
         }else{
             vueMenu.buttonPlay.text = "Create"

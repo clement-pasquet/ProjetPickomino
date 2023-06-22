@@ -44,8 +44,10 @@ class VueMenu: HBox() {
     init {
         var font1 = javaClass.getResourceAsStream("/font/JockeyOne-Regular.ttf")
         var font3 = javaClass.getResourceAsStream("/font/JockeyOne-Medium.ttf")
+        var font4 = javaClass.getResourceAsStream("/font/JockeyOne-Little.ttf")
         var jockeyOneFont = Font.loadFont(font1,20.0)
         var jockeyOneFontMedium = Font.loadFont(font3,30.0)
+        var jockeyOneFontLittle = Font.loadFont(font4,17.0)
         this.gameHasBeenCreated = true
         this.imagelogo = Image("pickomino_logo 1logo.png")
 
@@ -98,30 +100,30 @@ class VueMenu: HBox() {
         this.nbJoueurText = Label("Nombre de joueurs")
         this.nbJoueurText.textFill = Color.WHITE
         nbJoueurText.font = jockeyOneFontMedium
+
+        nbJoueur = ComboBox()
         var l = FXCollections.observableArrayList<Int>(2,3,4)
-        nbJoueur = ComboBox(l)
+        nbJoueur.items = l
         nbJoueur.selectionModel.selectFirst()
-        nbJoueur.style = "-fx-background-radius:10; -fx-background-color : #FFFF"
-        nbJoueur.setPrefSize(20.0,20.0)
-        buttonPlay = Button("Play")
+        nbJoueur.style = "-fx-background-radius:10; -fx-background-color: #FFFFF;"
+
+        buttonPlay = Button("Create")
         buttonPlay.setMinSize(200.0, 100.0)
         buttonPlay.setMaxSize(200.0, 100.0)
         buttonPlay.font = jockeyOneFontMedium
         buttonPlay.textFill = Color.WHITE
-        buttonPlay.style = "-fx-background-radius:15; "
+        buttonPlay.style = "-fx-background-radius:15;"
 
-        this.creatPartie = RadioButton("Créer une partie")
-        this.creatPartie.font = jockeyOneFont
+        this.creatPartie = RadioButton("Créer partie")
         this.creatPartie.textFill = Color.WHITE
         creatPartie.toggleGroup = toggleGroup
         creatPartie.isSelected = true // le radio button est selec. par défaut
-        this.creatPartie.font = jockeyOneFont
+        this.creatPartie.font = jockeyOneFontLittle
 
-        this.joinPartie = RadioButton("Rejoindre une partie")
-        this.joinPartie.font = jockeyOneFont
+        this.joinPartie = RadioButton("Rejoindre partie")
         this.joinPartie.textFill = Color.WHITE
         joinPartie.toggleGroup = toggleGroup
-        this.joinPartie.font = jockeyOneFont
+        this.joinPartie.font = jockeyOneFontLittle
 
         this.style = ("-fx-background-color : #8E7FEE")
 
@@ -156,8 +158,10 @@ class VueMenu: HBox() {
         vBox1.spacing = 20.0
         this.imageview.fitWidth = 250.0
         this.imageview.fitHeight = 250.0
-
-        vBox1.children.addAll(this.imageview,this.username, this.playerNumber, buttonPlay)
+        var hBox3 = HBox()
+        hBox3.spacing = 20.0 ///////////////////////////////
+        hBox3.children.addAll(this.creatPartie, this.joinPartie)
+        vBox1.children.addAll(this.imageview, hBox3, this.username, this.playerNumber, buttonPlay)
         var gridpane1 = GridPane()
 
         this.imageViewBleue.fitHeight = 170.0
@@ -189,7 +193,7 @@ class VueMenu: HBox() {
 
         var vBox0 = VBox()
         vBox0.spacing = 20.0
-        vBox0.children.addAll(this.creatPartie, this.joinPartie, lbGId, this.gameId, lbGKey,this.gameKey)
+        vBox0.children.addAll( lbGId, this.gameId, lbGKey,this.gameKey)
 
         this.children.addAll(vBox0,vBox1, vBox2)
 
