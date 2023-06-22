@@ -21,18 +21,18 @@ fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
 
     println(dices)
     println(score)
-
-    if( score > 20 ){
-        for (i in 0 until vuePrincipale.listPickominos.size){
-            var imgV = vuePrincipale.listPickominos[i].graphic as ImageView
-            if (imgV.image.url.split("Domino/")[1].split(".")[0].toInt() == score){
-                vuePrincipale.listPickominos[i].isDisable = false
-                var contrChooseP = controllerChoosePickomino(vuePrincipale)
-                vuePrincipale.listPickominos[i].onMouseClicked = contrChooseP
-            }else{
-                vuePrincipale.listPickominos[i].isDisable = true
+    if (hasWorm) {
+        if (score > 20) {
+            for (i in 0 until vuePrincipale.listPickominos.size) {
+                var imgV = vuePrincipale.listPickominos[i].graphic as ImageView
+                if (imgV.image.url.split("Domino/")[1].split(".")[0].toInt() == score) {
+                    vuePrincipale.listPickominos[i].isDisable = false
+                    var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                    vuePrincipale.listPickominos[i].onMouseClicked = contrChooseP
+                } else {
+                    vuePrincipale.listPickominos[i].isDisable = true
+                }
             }
         }
     }
-
 }

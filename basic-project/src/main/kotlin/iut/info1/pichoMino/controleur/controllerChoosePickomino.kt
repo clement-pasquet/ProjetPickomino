@@ -22,5 +22,6 @@ class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<Mou
         var imgV = btn.graphic as ImageView
         println(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
         vuePrincipale.player.takePickomino(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
+        updatePiles(vuePrincipale)
     }
 }
