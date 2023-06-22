@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView
 fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
     var hasWorm = false
     var score = 0
+    var gameId = vuePrincipale.player.gameId
+    var gameKey = vuePrincipale.player.gameKey
 
     for (dice in dices){
         if (dice != DICE.worm) {
@@ -31,6 +33,16 @@ fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
                     vuePrincipale.listPickominos[i].onMouseClicked = contrChooseP
                 } else {
                     vuePrincipale.listPickominos[i].isDisable = true
+                }
+            }
+            var topPiles =  vuePrincipale.connect.gameState(gameId,gameKey).pickosStackTops()
+            for (i in 0 until topPiles.size){
+                if (topPiles[i]==score){
+                    if (i != vuePrincipale.connect.gameState(gameId,gameKey).current.player){
+                        vuePrincipale.listPickominos[topPiles[i]-21].isDisable = false
+                    }
+                }else{
+                    vuePrincipale.listPickominos[topPiles[i]-21].isDisable = true
                 }
             }
         }

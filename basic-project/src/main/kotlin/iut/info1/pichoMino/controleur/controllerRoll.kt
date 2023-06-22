@@ -23,6 +23,7 @@ class controllerRoll(vuePrincipale: vuePrincipale, connect: Connector): EventHan
         var gameId = vuePrincipale.player.gameId
         var gameKey = vuePrincipale.player.gameKey
         if (connect.gameState(gameId,gameKey).current.status== STATUS.ROLL_DICE || connect.gameState(gameId,gameKey).current.status== STATUS.ROLL_DICE_OR_TAKE_PICKOMINO) {
+            updatePiles(vuePrincipale)
             var rolled =vuePrincipale.player.rollDices()
             var kept = connect.gameState(gameId,gameKey).current.keptDices
 

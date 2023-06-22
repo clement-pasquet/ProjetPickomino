@@ -6,6 +6,7 @@ import javafx.scene.control.Button
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
+import java.lang.reflect.Field
 
 
 class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<MouseEvent> {
@@ -22,6 +23,12 @@ class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<Mou
         var imgV = btn.graphic as ImageView
         println(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
         vuePrincipale.player.takePickomino(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
+        var pickName = "p" + imgV.image.url.split("Domino/")[1].split(".")[0]
+        val field: Field = vuePrincipale.javaClass.getDeclaredField(pickName)
+        field.isAccessible = true
+        val value: Button = field.get(vuePrincipale) as Button
+        value.isVisible = false
+        value.isDisable = true
         updatePiles(vuePrincipale)
     }
 }

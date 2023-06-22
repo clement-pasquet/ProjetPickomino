@@ -18,6 +18,7 @@ class controllerKeepDices(vuePrincipale: vuePrincipale) : EventHandler<MouseEven
     override fun handle(event: MouseEvent) {
         var gamestate = vuePrincipale.connect.gameState(vuePrincipale.player.gameId, vuePrincipale.player.gameKey).current.status
         if (gamestate == STATUS.KEEP_DICE) {
+            updatePiles(vuePrincipale)
             var source = event.source as Button
             var imgV = source.graphic as ImageView
             var img = imgV.image
