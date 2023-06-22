@@ -17,6 +17,7 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var player : Player
     var connect : Connector
     var pickominoImages : List<String>
+    var versImages : List<String>
     var desImages : List<String>
     var buttonRollDice : Button
 
@@ -95,6 +96,9 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var desBoxB : HBox
     var desBoxD : VBox
     var desBoxH : HBox
+
+    var versBox : HBox
+    var versView:ImageView
     init {
         connect = connector
         this.player = player
@@ -116,6 +120,15 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
             "Domino/35.png",
             "Domino/36.png"
         )
+
+        versImages = listOf(
+            "Personnages/worm_blue_cute1.png",
+            "Personnages/worm_green_cute1.png",
+            "Personnages/worm_red_cute1.png",
+            "Personnages/worm_yellow_cute1.png"
+        )
+
+
 
         desImages = listOf(
             "Des/d1.png",
@@ -322,9 +335,19 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
 
         desBoxB = HBox(7.50)
         desBoxB.alignment = Pos.CENTER
-        desBoxB.children.addAll(db1,db2,db3,db4,db5,db6,db7,db8,pb)
 
-        bottomPane.children.add(desBoxB)
+        this.versView = ImageView(versImages[0])
+        versView.fitHeight = 75.0
+        versView.fitWidth = 75.0
+        versBox = HBox(7.50)
+        versBox.alignment = Pos.BASELINE_LEFT
+        versBox.children.addAll(versView)
+        desBoxB.children.addAll(db1,db2,db3,db4,db5,db6,db7,db8,pb)
+        var vBoxtes = HBox()
+        vBoxtes.padding = Insets(0.0,0.0,0.0,-80.0)
+        vBoxtes.children.addAll(versBox,desBoxB)
+        vBoxtes.spacing = 5.0
+        bottomPane.children.addAll(vBoxtes)
 
         layout.bottom = bottomPane
 

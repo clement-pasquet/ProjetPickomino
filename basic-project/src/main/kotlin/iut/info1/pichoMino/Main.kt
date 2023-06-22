@@ -7,7 +7,9 @@ import javafx.application.Platform
 import javafx.scene.Scene
 import javafx.stage.Stage
 import iut.info1.pichoMino.controleur.controllerBtnRdConnectPlay
+import iut.info1.pichoMino.controleur.controllerChoosePerso
 import iut.info1.pichoMino.vue.VueMenu
+import iut.info1.pichoMino.vue.vuePrincipale
 import pichoMino.controleur.controllerPlay
 
 
@@ -25,6 +27,7 @@ class Main: Application() {
         }
         Thread.sleep(3)
     }
+
     override fun start(primaryStage: Stage) {
         val vueMenu = VueMenu()
 
@@ -38,6 +41,14 @@ class Main: Application() {
         var contrRdBtn = controllerBtnRdConnectPlay(vueMenu,primaryStage,conn,player)
         vueMenu.creatPartie.onMouseClicked = contrRdBtn
         vueMenu.joinPartie.onMouseClicked = contrRdBtn
+
+        var contrChoose = controllerChoosePerso()
+        vueMenu.imageViewRouge.onMouseClicked = contrChoose
+        vueMenu.imageViewVert.onMouseClicked = contrChoose
+        vueMenu.imageViewBleue.onMouseClicked = contrChoose
+        vueMenu.imageViewJaune.onMouseClicked = contrChoose
+
+
         primaryStage.show()
     }
 }
