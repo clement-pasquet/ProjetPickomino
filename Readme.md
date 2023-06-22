@@ -1,4 +1,7 @@
-﻿**L’objectif du projet**
+﻿<img src="logo.png" alt="Logo" width="80" height="80">
+
+
+**L’objectif du projet**
 
 Cette SAE, faisant le lien entre trois matières étudiées au cours du semestre, consiste à développer une application en Kotlin/JavaFX. Ce projet permet de mettre en lien les différentes compétences apprises dans les cours de développement orienté objet, d’IHM et de qualité de développement. 
 
@@ -20,7 +23,7 @@ Enfin, le travail à réaliser en qualité logiciel, était tout d’abord, d’
 **I- Contenu du jeu** 
 
 - 8 dés de 6 faces (5 faces représentent les chiffres de 1 à 5, et la 6ème face représente un ver, d’une valeur de 5).
-- 16 pickomino contenant une valeur de 21 à 36 et une nombre de vers de 1 à 4
+- 16 pickomino contenant une valeur de 21 à 36 et un nombre de vers de 1 à 4
 
 **II- Règles du jeu** 
 
@@ -44,7 +47,7 @@ Le but du jeu est d’accumuler le plus de pickominos avec le plus grand nombre 
 
 A chaque manche, le joueur relance les dés qu’ils lui restent jusqu’à qu’il puisse se permettre de prendre un pickomino.
 
-Si le joueur n’a pas de ver ou qu’il n’a pas atteint une valeur suffisamment élevée pour jouer, il doit remettre le pickomino au sommet de sa pile dans la brochette des vers et retourner ( rendre inutilisable ) le pickomino ayant la plus grande valeur dans la brochette de vers. C’est le tour du joueur suivant.
+Si le joueur n’a pas de ver ou qu’il n’a pas atteint une valeur suffisamment élevée pour jouer, il doit remettre le pickomino au sommet de sa pile dans la brochette des vers et retourner ( rendent inutilisable ) le pickomino ayant la plus grande valeur dans la brochette de vers. C’est le tour du joueur suivant.
 
 Attention, si le pickomino qui a été mis dans la brochette de vers est le plus grand de toute la brochette des vers, on ne retourne pas ce pickomino.
 
@@ -77,8 +80,9 @@ Notre application possède de nombreuses fonctions ce qui entraîne forcément d
 - Tester que si l’on choisi une valeur que tous les dés de cette valeurs sont pris (grisé DiceNotInRollException : PickominoException) 
 - Tester que si une valeur de dés à été choisi on ne peut plus prendre celle-ci (grisé DiceAlreadyKeptException : PickominoException) 
 - Tester que si un dés a été choisi on ne peut pas relancer celui-ci. (grisé) 
+- On est obligé de sélectionner un Dé ou un pickomino par tour
 - Tester que la valeur d’un ver est de 5 
-- Le nombre de dé au départ est = à 8 
+- Le nombre de dé au départ est égal à 8 
 
 
 
@@ -144,9 +148,9 @@ Aussi, dans tous les cas, le joueur à la possibilité de choisir l’image de s
 
 Attention, si l’utilisateur se trompe de numéro de joueur, la partie est inutilisable !
 
-**L'Écran de chargement.**
+**L'écran de chargement.**
 
-L’écran de chargement ne servait qu’uniquement à faire patienter le joueur, il ne contient que peu de chose.
+L’écran de chargement ne servait qu’uniquement à faire patienter le joueur, il ne contenait que peu de chose.
 
 Ce Menu ne contient qu’un texte au centre demandant aux joueurs de patienter, et différentes illustrations de vers autour pour agrémenter.
 
@@ -171,3 +175,178 @@ Chaque zone de joueur affiche aussi **le dernier pickomino conservé** avec **le
 Nous avons commencé à modéliser le système de jeu et les différentes tâches à attribuer.
 
 - Faire un WBS pour la détermination des tâches et faire un gantt
+
+
+
+
+
+
+
+
+**Projet Pickomino**
+
+Justine BERNIER
+
+Esteban GIROUX
+
+Hippolyte GUILLOTEAU
+
+Clément PASQUET
+
+**But du projet :** 
+
+Réaliser une application permettant de jouer en multijoueur, à un jeu de dés appelé Pickomino.
+
+**Description des vues :** 
+
+Notre jeu comporte trois vues, une pour la vue du chargement de l’ouverture de l’application, une seconde pour le menu principal permettant de paramétrer la partie de pickomino, et une troisième pour l’interface de jeu.
+
+**Méthode de projet :** 
+
+Durant la conception de notre projet, nous n’avons pas utilisé de méthode agile.
+
+Cependant, dans ce rapport, nous verrons comment nous nous serions organisés si nous avions utilisé une méthode agile.
+
+Pourquoi nous avons choisis une méthode agile : 
+
+- Nous sommes un petit groupe, cela nous a donc permis d’être flexible dans l’organisation des réunions que nous pouvions organiser lorsque nous en avions besoin en plus de celle organisée chaque matins.
+
+Ainsi, l’utilisation d’une méthode agile permet d’améliorer la communication entre les membres de notre équipe et d’augmenter notre productivité.
+
+- Nous ne connaissons pas la bibliothèque utilisée.
+
+Ainsi, le fait d’utiliser une méthode agile permet de se coordonner rapidement pour confronter les éventuels problèmes que nous n’avions pas prévus.
+
+**Description de la méthode :** 
+
+La méthode agile est une approche itérative et collaborative qui favorise la flexibilité, la communication et l'adaptabilité dans la gestion de projets, permettant ainsi d'obtenir des résultats rapides et de répondre efficacement aux changements.
+
+**Répartition des responsabilités de chaque personne :**
+
+|Justine|Esteban|Hippolyte|Clément|
+| - | - | - | - |
+|Implémentation du Menu|Création du système de connexion.|Implémentation de l’interface de jeu|Création du design|
+
+Ici, Justine sera chargée d’implémenter le menu.
+
+Cela sous entend de créer une interface visible par l’utilisateur grâce au design et aux images de Clément.
+
+De même, Justine sera consultée et s'occupera de la création des tests dans le menu avec Clément.
+
+Esteban sera chargé de la conception du système de connexion permettant la liaison avec d’autres joueurs, et de son implémentation, à la fois dans le menu pour permettre de créer ou de rejoindre une partie,  mais aussi dans l’interface du jeu pour pouvoir mettre en place le système de jeu avec Hippolyte. 
+
+Ainsi, il sera consulté dans la conception des tests pour l’interface du jeu, mais aussi pour la création de la structure et de son implantation.
+
+Hippolyte, lui, s’occupera principalement de l’implémentation du design de l’interface de jeu et de ses images qui ont déjà été faits par Clément, que ce soit en créant la structure JavaFX puis en implémentant directement.
+
+Aussi, il sera chargé de créer et d’implémenter les tests de l’interface du jeu.
+
+Clément s’occupera lui de la conception des images, du logo, et aussi de la création des designs, à la fois du menu et de l’interface de jeu.
+
+De même, il est chargé avec Justine, d’implémenter les tests du menu, mais il est aussi consulté pour la création de la structure du menu et de son implantation.
+
+**Comment gérer les risques et les accrocs ?**
+
+L’utilisation d’une méthode agile nous permet de limiter l’impact des éventuelles problèmes  grâce :
+
+- A des réunions quotidiennes appelées “Mêlée”.
+
+Cela permet, tous les matins, d’informer concernant les éventuels “problèmes”, ce qui permet à toute l’équipe de se mettre d’accord sur la façon de le résoudre.
+
+- De changer rapidement les tâches à effectuer.
+
+En se mettant rapidement d’accord sur les problèmes cela permet de s’adapter efficacement aux nouvelles problématiques.
+
+- En faisant tester notre code à différentes personnes.
+
+Cela permet de comprendre facilement l’attente des utilisateurs et d’adapter nos différentes tâches.
+
+**Tableau des backlogs :**
+
+<table><tr><th valign="top">Backlog Complet</th><th valign="top">Backlog du Sprint</th></tr>
+<tr><td rowspan="3" valign="top">Créer le Preloader</td><td valign="top">Créer la structure javafx du Preloader</td></tr>
+<tr><td valign="top">Mettre ce qui vérifie si l’utilisateur est dans le bon réseau dans le Preloader</td></tr>
+<tr><td valign="top">Implémenter le logo dans le Preloader</td></tr>
+<tr><td rowspan="7" valign="top">Créer le Menu</td><td valign="top">Créer les images d’interface</td></tr>
+<tr><td valign="top">Créer le logo</td></tr>
+<tr><td valign="top">Designer le menu</td></tr>
+<tr><td valign="top">Créer la structure javafx du menu</td></tr>
+<tr><td valign="top">Implémenter le menu</td></tr>
+<tr><td valign="top">Implémenter le système de connexion dans le menu</td></tr>
+<tr><td valign="top">Création & Implémentation des tests</td></tr>
+<tr><td rowspan="7" valign="top">Créer l’interface de jeu</td><td valign="top">Créer les images d’interface</td></tr>
+<tr><td valign="top">Designer l’interface de jeu</td></tr>
+<tr><td valign="top">Créer la structure javafx de l’interface du jeu</td></tr>
+<tr><td valign="top">Implémenter l’interface de jeu</td></tr>
+<tr><td valign="top">Implémenter le système de connexion dans l’interface de jeu</td></tr>
+<tr><td valign="top">Implémenter le système de jeu dans l’interface de jeu</td></tr>
+<tr><td valign="top">Création & Implémentation des tests</td></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Diagramme de Gantt :** 
+
+Les différentes sous-tâches représentées dans le tableau des “backlogs” sont représenté dans un “diagramme de Gantt” qui représente les différentes tâches à effectuer au fur et à mesure du temps : 
+
+![](gantt.png)
+
+
+
+
+**Conclusion :** 
+
+Notre projet consiste en une application de jeu de dés multijoueur que nous avions à la base effectué sans méthode particulière, mais nous nous sommes intéressés à comment nous aurions fait le projet si nous avions mis en place une méthode agile, que ce soit à travers la création de sous-tâches via le “Tableau des backlogs” ou via leur répartition en fonction du temps et des personnes.
+
+
+
+**Tableau des Responsabilités RAM :** 
+
+R = Celui qui fait le travail
+
+A = Responsable du travail
+
+C = consulté
+
+I = Informé
+
+|N° de tâche|Justine|Esteban|Hippolyte|Clément|
+| - | - | - | - | - |
+|Modéliser le projet|I|R,A|A|I|
+||||||
+|Créer les images d’interface du menu dont le logo|C|I|I|R,A|
+|Designer le menu|C|I|I|R, A|
+|Créer la structure javafx du menu|R, A|I|I|C|
+|Implémenter le menu|R,A|I|I|C|
+|Implémenter le système de connexion dans le menu|C|R,A|I|I|
+|Création & Implémentation des tests du menu|I|R,A|I|R,A|
+||||||
+|Créer les images d’interface de l’interface|I|I|C|R,A|
+|Designer l’interface de jeu|I|I|C|R,A|
+|Créer la structure javafx de l’interface du jeu|I|C|R, A|I|
+|Implémenter l’interface de jeu|I|C|R,A|I|
+|Implémenter le système de connexion dans l’interface de jeu|I|R,A|C|I|
+|Implémenter le système de jeu dans l’interface de jeu|I|R,A|R,A|I|
+|Création & Implémentation des tests|I|C|R,A|I|
+||||||
+|Créer la structure javafx du Preloader|R,A|I|I|I|
+|Mettre ce qui vérifie si l’utilisateur est dans le bon réseau dans le Preloader|R,A|I|R,A|I|
+|Implémenter le logo dans le Preloader|R,A|I|I|C|
+
+
+
+
