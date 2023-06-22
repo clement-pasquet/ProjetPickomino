@@ -39,12 +39,39 @@ class controllerKeepDices(vuePrincipale: vuePrincipale) : EventHandler<MouseEven
             }
 
             var possible = vuePrincipale.player.keepDices(value)
+            var currentPlayer = vuePrincipale.connect.gameState(vuePrincipale.player.gameId,vuePrincipale.player.gameKey).current.player
             if (possible) {
-                for (bouton in vuePrincipale.listBoutonB) {
-                    var imgVBt = bouton.graphic as ImageView
-                    if (imgVBt.image.url.split("Des/")[1] == finalString) {
-                        bouton.isDisable = true
-                        vuePrincipale.player.keptDices+=value
+                if (currentPlayer == 0){
+                    for (bouton in vuePrincipale.listBoutonB) {
+                        var imgVBt = bouton.graphic as ImageView
+                        if (imgVBt.image.url.split("Des/")[1] == finalString) {
+                            bouton.isDisable = true
+                            vuePrincipale.player.keptDices += value
+                        }
+                    }
+                }else if(currentPlayer == 1){
+                    for (bouton in vuePrincipale.listBoutonH) {
+                        var imgVBt = bouton.graphic as ImageView
+                        if (imgVBt.image.url.split("Des/")[1] == finalString) {
+                            bouton.isDisable = true
+                            vuePrincipale.player.keptDices += value
+                        }
+                    }
+                }else if (currentPlayer == 2){
+                    for (bouton in vuePrincipale.listBoutonG) {
+                        var imgVBt = bouton.graphic as ImageView
+                        if (imgVBt.image.url.split("Des/")[1] == finalString) {
+                            bouton.isDisable = true
+                            vuePrincipale.player.keptDices += value
+                        }
+                    }
+                }else{
+                    for (bouton in vuePrincipale.listBoutonD) {
+                        var imgVBt = bouton.graphic as ImageView
+                        if (imgVBt.image.url.split("Des/")[1] == finalString) {
+                            bouton.isDisable = true
+                            vuePrincipale.player.keptDices += value
+                        }
                     }
                 }
             }

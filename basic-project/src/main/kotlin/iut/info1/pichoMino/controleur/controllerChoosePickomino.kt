@@ -17,8 +17,6 @@ class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<Mou
     }
 
     override fun handle(event: MouseEvent) {
-        println(vuePrincipale.connect.gameState(vuePrincipale.player.gameId,vuePrincipale.player.gameKey).current.status)
-
         var btn = event.source as Button
         var imgV = btn.graphic as ImageView
         println(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
