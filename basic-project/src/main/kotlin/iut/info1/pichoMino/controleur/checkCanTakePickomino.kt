@@ -43,6 +43,8 @@ fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
                     }
                 }else{
                     vuePrincipale.listPickominos[topPiles[i]-21].isDisable = true
+                    var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                    vuePrincipale.listPickominos[topPiles[i]-21].onMouseClicked = contrChooseP
                 }
             }
         }
