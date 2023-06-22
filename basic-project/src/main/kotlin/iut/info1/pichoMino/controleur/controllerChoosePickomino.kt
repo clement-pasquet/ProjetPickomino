@@ -17,6 +17,8 @@ class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<Mou
     }
 
     override fun handle(event: MouseEvent) {
+        var gameId = vuePrincipale.player.gameId
+        var gameKey = vuePrincipale.player.gameKey
         var btn = event.source as Button
         var imgV = btn.graphic as ImageView
         println(imgV.image.url.split("Domino/")[1].split(".")[0].toInt())
@@ -28,5 +30,6 @@ class controllerChoosePickomino(vuePrincipale: vuePrincipale) : EventHandler<Mou
         value.isVisible = false
         value.isDisable = true
         updatePiles(vuePrincipale)
+        updatePickos(vuePrincipale,vuePrincipale.connect)
     }
 }
