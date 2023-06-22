@@ -20,6 +20,9 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var desImages : List<String>
     var buttonRollDice : Button
 
+    val pickominoBox : VBox
+    val gridPane : GridPane
+
     var p21 : Button
     var p22 : Button
     var p23 : Button
@@ -124,7 +127,7 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
 
 
         // Création de la grille pour afficher les pickominos
-        val gridPane = GridPane()
+        gridPane = GridPane()
         gridPane.alignment = Pos.CENTER
         gridPane.hgap = 10.0
         gridPane.vgap = 10.0
@@ -191,7 +194,7 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
 
         layout.padding = Insets(40.0)
 
-        val pickominoBox = VBox(10.0)
+        pickominoBox = VBox(10.0)
         pickominoBox.padding = Insets(0.0)
 
         pickominoBox.alignment = Pos.CENTER
