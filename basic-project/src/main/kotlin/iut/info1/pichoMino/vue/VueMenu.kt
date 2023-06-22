@@ -10,6 +10,13 @@ import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 
+import javax.sound.sampled.AudioInputStream
+import javax.sound.sampled.AudioSystem
+import javax.sound.sampled.Clip
+import javax.sound.sampled.LineEvent
+import javax.sound.sampled.LineListener
+
+
 
 class VueMenu: HBox() {
     var buttonPlay : Button
@@ -42,6 +49,29 @@ class VueMenu: HBox() {
     var gameHasBeenCreated : Boolean
 
     init {
+
+        try {
+            var filePath = "/Musique/Sonus_Ad_Astra_wav.wav"
+            val audioInputStream: AudioInputStream = AudioSystem.getAudioInputStream(this::class.java.getResource("/Musique/Sonus_Ad_Astra_wav.wav"))
+            val clip: Clip = AudioSystem.getClip()
+            clip.open(audioInputStream)
+            clip.loop(Clip.LOOP_CONTINUOUSLY)
+
+            print("met la musique charly !")
+
+            clip.addLineListener(object : LineListener {
+                override fun update(event: LineEvent) {
+                    if (event.type == LineEvent.Type.STOP) {
+                        clip.loop(Clip.LOOP_CONTINUOUSLY)
+                    }
+                }
+            })
+
+            clip.loop(Clip.LOOP_CONTINUOUSLY)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         var font1 = javaClass.getResourceAsStream("/font/JockeyOne-Regular.ttf")
         var font3 = javaClass.getResourceAsStream("/font/JockeyOne-Medium.ttf")
         var font4 = javaClass.getResourceAsStream("/font/JockeyOne-Little.ttf")
