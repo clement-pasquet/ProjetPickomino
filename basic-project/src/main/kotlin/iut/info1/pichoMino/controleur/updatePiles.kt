@@ -21,8 +21,8 @@ fun updatePiles(vuePrincipale: vuePrincipale) {
     var imgH : Image
     imgH = Image("Domino/" + topOfPile[1].toString() + ".png")
     var imgHView = ImageView(imgH)
-    imgBView.fitHeight = imgH.height * 0.5
-    imgBView.fitWidth = imgH.width * 0.5
+    imgHView.fitHeight = imgH.height * 0.5
+    imgHView.fitWidth = imgH.width * 0.5
 
     vuePrincipale.ph.graphic = imgHView
 
