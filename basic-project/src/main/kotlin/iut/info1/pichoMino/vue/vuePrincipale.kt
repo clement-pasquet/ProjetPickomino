@@ -61,6 +61,8 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var dg8 : Button
     var pg : Button
 
+    var listBoutonG : List<Button>
+
     var dd1 : Button
     var dd2 : Button
     var dd3 : Button
@@ -71,6 +73,8 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var dd8 : Button
     var pd : Button
 
+    var listBoutonD : List<Button>
+
     var dh1 : Button
     var dh2 : Button
     var dh3 : Button
@@ -80,6 +84,8 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
     var dh7 : Button
     var dh8 : Button
     var ph : Button
+
+    var listBoutonH : List<Button>
 
 
     var desBoxG : VBox
@@ -419,6 +425,11 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
         desBoxG.alignment = Pos.CENTER
         desBoxG.children.addAll(dg1,dg2,dg3,dg4,dg5,dg6,dg7,dg8,pg)
 
+        listBoutonG = listOf(dg1,dg2,dg3,dg4,dg5,dg6,dg7,dg8)
+
+        for (bouton in listBoutonG){
+            bouton.onMouseClicked = contrDice
+        }
 
         leftPane.children.add(desBoxG)
 
@@ -523,6 +534,11 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
         desBoxD.alignment = Pos.CENTER
         desBoxD.children.addAll(dd1,dd2,dd3,dd4,dd5,dd6,dd7,dd8,pd)
 
+        listBoutonD = listOf(dd1,dd2,dd3,dd4,dd5,dd6,dd7,dd8)
+
+        for (bouton in listBoutonD){
+            bouton.onMouseClicked = contrDice
+        }
 
         rightPane.children.add(desBoxD)
         layout.right = rightPane
@@ -632,6 +648,12 @@ class vuePrincipale(player: Player,connector : Connector) : VBox() {
         desBoxH = HBox(7.50)
         desBoxH.alignment = Pos.CENTER
         desBoxH.children.addAll(dh1,dh2,dh3,dh4,dh5,dh6,dh7,dh8,ph)
+
+        listBoutonH = listOf(dh1,dh2,dh3,dh4,dh5,dh6,dh7,dh8)
+
+        for (bouton in listBoutonH){
+            bouton.onMouseClicked = contrDice
+        }
 
         topPane.children.add(desBoxH)
 

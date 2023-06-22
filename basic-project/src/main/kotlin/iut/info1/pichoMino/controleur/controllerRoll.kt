@@ -53,7 +53,7 @@ class controllerRoll(vuePrincipale: vuePrincipale, connect: Connector): EventHan
 
             var i = 0
             while (i<listImages.size){
-                if (currentPlayer==1){
+                if (currentPlayer==0){
                     listDicesP1[i].graphic = listImages[i]
                     listDicesP1[i].isDisable = false
                 }else{
@@ -64,7 +64,7 @@ class controllerRoll(vuePrincipale: vuePrincipale, connect: Connector): EventHan
             }
             if (i<8){
                 while (i-listImages.size<listImagesKept.size){
-                    if (currentPlayer==1) {
+                    if (currentPlayer==0) {
                         listDicesP1[i].graphic = listImagesKept[i - listImages.size]
                         listDicesP1[i].isDisable = true
                     }else{
