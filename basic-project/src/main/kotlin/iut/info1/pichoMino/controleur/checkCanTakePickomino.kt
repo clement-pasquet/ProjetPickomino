@@ -39,12 +39,35 @@ fun checkCanTakePickomino(dices : List<DICE>,vuePrincipale: vuePrincipale) {
             for (i in 0 until topPiles.size){
                 if (topPiles[i]==score){
                     if (i != vuePrincipale.connect.gameState(gameId,gameKey).current.player){
-                        vuePrincipale.listPickominos[topPiles[i]-21].isDisable = false
+                        if (i==1){
+                            vuePrincipale.pb.isDisable = false
+                            var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                            vuePrincipale.pb.onMouseClicked = contrChooseP
+                        }else if (i==2){
+                            vuePrincipale.ph.isDisable = false
+                            var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                            vuePrincipale.ph.onMouseClicked = contrChooseP
+                        }else if (i==3){
+                            vuePrincipale.pg.isDisable = false
+                            var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                            vuePrincipale.pg.onMouseClicked = contrChooseP
+                        }else{
+                            vuePrincipale.pd.isDisable = false
+                            var contrChooseP = controllerChoosePickomino(vuePrincipale)
+                            vuePrincipale.pd.onMouseClicked = contrChooseP
+                        }
                     }
                 }else{
-                    vuePrincipale.listPickominos[topPiles[i]-21].isDisable = true
-                    var contrChooseP = controllerChoosePickomino(vuePrincipale)
-                    vuePrincipale.listPickominos[topPiles[i]-21].onMouseClicked = contrChooseP
+                    if (i==1){
+                        vuePrincipale.pb.isDisable = true
+                    }else if (i==2){
+                        vuePrincipale.ph.isDisable = true
+                    }else if (i==3){
+                        vuePrincipale.pg.isDisable = true
+                    }else{
+                        vuePrincipale.pd.isDisable = true
+                    }
+
                 }
             }
         }
